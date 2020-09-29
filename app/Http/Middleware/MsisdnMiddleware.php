@@ -19,6 +19,10 @@ class MsisdnMiddleware
      */
     public function handle($request, Closure $next)
     {
+        if (preg_match('/stores/', $request->path())) {
+            return  $next($request);
+        }
+
         $msisdn = $request->header('x-wassup-msisdn');
         if(!$msisdn)
             // Return unauthorized - Missing Header param
