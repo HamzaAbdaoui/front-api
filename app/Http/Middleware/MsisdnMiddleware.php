@@ -29,7 +29,6 @@ class MsisdnMiddleware
             return response()->json([
                 'status'    => Response::HTTP_UNAUTHORIZED,
                 'message'   => 'Missing Header parameter for MSISDN!',
-                'data'      => [],
                 'error'     => true
             ], Response::HTTP_UNAUTHORIZED);
             
@@ -38,7 +37,6 @@ class MsisdnMiddleware
             return response()->json([
                 'status'    => Response::HTTP_UNAUTHORIZED,
                 'message'   => 'The provided MSISDN in not valid!',
-                'data'      => [],
                 'error'     => true
             ], Response::HTTP_UNAUTHORIZED);
         if(in_array($msisdn-21600000000, $this->blockedNumbers))
@@ -46,7 +44,6 @@ class MsisdnMiddleware
             return response()->json([
                 'status'    => Response::HTTP_UNAUTHORIZED,
                 'message'   => "Orange Go n'est pas disponible aux collaborateurs Orange Tunisie",
-                'data'      => [],
                 'error'     => true
             ], Response::HTTP_UNAUTHORIZED);
         
