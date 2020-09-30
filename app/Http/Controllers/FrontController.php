@@ -33,7 +33,7 @@ class FrontController extends Controller
         ];
 
         $contentType = $request->header('content-type');
-        if ($contentType == 'application/x-www-form-urlencoded' || $contentType == 'application/json')
+        if (preg_match('/application\/x-www-form-urlencoded/', $contentType) || preg_match('/application\/json/', $contentType) )
             $guzzleParams['form_params'] = $params;
         elseif(preg_match('/multipart/', $contentType)){
             $multipart = [];
